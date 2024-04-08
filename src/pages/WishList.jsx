@@ -33,14 +33,14 @@ export default function WishList() {
       {wishListPoducts.length > 0 ? (
         <SimpleGrid p="10px" spacing="10px" minChildWidth="300px">
           {wishListPoducts.map((item) => (
-            <Card maxW="sm" border="1px solid black" borderRadius="unset">
+            <Card maxW="sm" border="1px solid black" borderRadius="unset" key={item.id}>
               <CardHeader>
                 <VStack>
                   <Link to="/product" onClick={() => imageItemHandler(item.id)}>
                     <Image src={item.image} objectFit="fill" boxSize="200px" />
                   </Link>
-                  <Text pt="10px">Mens Casual Premium Slim Fit T-Shirts</Text>
-                  <Text>₹4200</Text>
+                  <Text pt="10px">{item.title}</Text>
+                  <Text>{`₹${item.price * 100}`}</Text>
                 </VStack>
               </CardHeader>
               <Button

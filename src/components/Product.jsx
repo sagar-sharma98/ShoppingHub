@@ -6,14 +6,15 @@ import { cartAction } from '../store/cart-slice';
 
 export default function Product() {
   const product = useSelector((state) => state.product.product);
+  console.log(product);
   const dispatch = useDispatch();
   
   const addBagHandler = () => {
     const productDetail = {
-      image: product.image,
-      title: product.title,
-      price: product.price,
-      id: product.id,
+      image: product[0].image,
+      title: product[0].title,
+      price: product[0].price * 100,
+      id: product[0].id,
     }
     dispatch(cartAction.addCart(productDetail));
     console.log("product detail sent");
@@ -23,12 +24,12 @@ export default function Product() {
   return (
     <Grid mx={20} my={5} gap={10} templateColumns="repeat(3, 1fr)">
         <GridItem colSpan="1">
-            <Image src={product.image} objectfit="cover" width="400px"/>
+            <Image src={product[0].image} objectfit="cover" width="400px"/>
         </GridItem>
         <GridItem colSpan="2" >
            <VStack spacing={4} alignItems="start">
-           <Heading fontWeight="light">{product.title}</Heading>
-            <Text>{`₹ ${product.price}`} <span>inclusive all the texes</span></Text>
+           <Heading fontWeight="light">{product[0].title}</Heading>
+            <Text>{`₹ ${product[0].price * 100}`} <span>inclusive all the texes</span></Text>
             <Text>Select color</Text>
             <HStack>
             <Box w="50px" h="50px" bg="blue.800"></Box>

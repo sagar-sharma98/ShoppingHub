@@ -15,13 +15,7 @@ const productSlice = createSlice({
   initialState: {
     products: [],
     wishList: [],
-    product: {
-      id: 0,
-      image: "",
-      title: "",
-      price: 0,
-      category: "",
-    },
+    product: [],
     totalItem: 0,
     totalPrice: 0,
   },
@@ -29,14 +23,10 @@ const productSlice = createSlice({
   reducers: {
     buyProductBtn(state, action) {
       const item = state.products.find((item) => item.id === action.payload);
-      state.product = {
-        ...state.product,
-        id: action.payload,
-        title: item.title,
-        price: Math.round(item.price * 100),
-        category: item.category,
-        image: item.image,
-      };
+      state.product.pop();
+      console.log(item);
+      state.product.push(item);
+      
     },
 
     wishListBtn(state, action) {

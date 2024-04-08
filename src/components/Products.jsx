@@ -24,7 +24,7 @@ export default function Products() {
   // const navigate = useNavigate();
 
   const buyBtnHandler = async (productId) => {
-    await dispatch(fetchData());
+    
     dispatch(productAction.buyProductBtn(productId));
   };
 
@@ -45,6 +45,7 @@ export default function Products() {
             kay={item.id}
             border="0.2px solid #7a7a7a"
             borderRadius="unset"
+            key={item.id}
           >
             <CardBody>
               <Image src={item.image} alt="picture" boxSize="300px" mb="10px" />
@@ -69,6 +70,7 @@ export default function Products() {
                   />
                 </Link>
               </HStack>
+              <Link to="./product" onClick={() => buyBtnHandler(item.id)}>
               <Button
                 colorScheme="blue"
                 w="full"
@@ -78,10 +80,11 @@ export default function Products() {
                 _hover="none"
                 borderRadius="unset"
               >
-                <Link to="./product" onClick={() => buyBtnHandler(item.id)}>
+                
                   Buy now
-                </Link>
+                
               </Button>
+              </Link>
             </VStack>
             {/* <Button
                   bg="white"

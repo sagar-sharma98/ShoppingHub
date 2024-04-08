@@ -12,6 +12,7 @@ const cartSlice = createSlice({
         addCart(state, action){
             const cartItem = action.payload;
             const itemPresent = state.cart.find((item) => item.id === cartItem.id);
+            
             if(!itemPresent){
                 const itemDetail = {
                     image: cartItem.image,
@@ -38,6 +39,7 @@ const cartSlice = createSlice({
                 state.totalItem++;
                 state.totalPrice = Math.round(state.totalPrice + cartItem.price);
             }
+            
         },
 
         deleteCartItem(state, action){

@@ -37,6 +37,7 @@ export default function ProductItem() {
             boxSizing="border-box"
             border="1px solid black"
             borderRadius="unset"
+            key={item.id}
           >
             <Image
               src={item.image}
@@ -72,7 +73,7 @@ export default function ProductItem() {
                 </HStack>
               </CardBody>
               <CardFooter>
-                <Select size="lg" maxW="100px" placeholder="1">
+                <Select size="lg" maxW="100px" placeholder="1" >
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
