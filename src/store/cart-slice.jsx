@@ -48,11 +48,17 @@ const cartSlice = createSlice({
             
             state.totalItem = state.totalItem - currentItem.itemquantity;
             state.totalPrice = Math.round(state.totalPrice - currentItem.price);
+        },
+
+        emptyCart(state){
+            state.cart = [];
+            state.totalItem = 0;
+            state.totalPrice = 0;
         }
     }
 
+   
 
-    
 });
 
 export const cartAction = cartSlice.actions;

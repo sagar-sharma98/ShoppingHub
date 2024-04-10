@@ -9,10 +9,17 @@ import {
   ModalContent,
 } from "@chakra-ui/react";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { cartAction } from "../store/cart-slice";
 
 export default function CartModal() {
+  const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const closeModal = () => {
+    dispatch(cartAction.emptyCart());
+  }
   return (
     <>
       <Button  width="full" bg="black" color="white" _hover="none" borderRadius="0px" onClick={onOpen}>CHECKOUT</Button>
@@ -26,7 +33,7 @@ export default function CartModal() {
 
           <ModalFooter justifyContent="center" my="10px">
             <Link to="../">
-            <Button bg="black" color="white" _hover="none" borderRadius="0px"  onClick={onClose}>
+            <Button bg="black" color="white" _hover="none" borderRadius="0px"  onClick={closeModal}>
               GO TO HOME PAGE
             </Button>
             </Link>

@@ -70,7 +70,7 @@ export default function Products() {
                   />
                 </Link>
               </HStack>
-              <Link to="./product" onClick={() => buyBtnHandler(item.id)}>
+              <Link to="./product"  style={{width: "100%"}} onClick={() => buyBtnHandler(item.id)}>
               <Button
                 colorScheme="blue"
                 w="full"
