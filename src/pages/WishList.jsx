@@ -33,7 +33,12 @@ export default function WishList() {
       {wishListPoducts.length > 0 ? (
         <SimpleGrid p="10px" spacing="10px" minChildWidth="300px">
           {wishListPoducts.map((item) => (
-            <Card maxW="sm" border="1px solid black" borderRadius="unset" key={item.id}>
+            <Card
+              maxW="sm"
+              border="1px solid black"
+              borderRadius="unset"
+              key={item.id}
+            >
               <CardHeader>
                 <VStack>
                   <Link to="/product" onClick={() => imageItemHandler(item.id)}>

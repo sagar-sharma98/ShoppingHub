@@ -19,41 +19,44 @@ export default function CartModal() {
 
   const closeModal = () => {
     dispatch(cartAction.emptyCart());
-  }
+  };
   return (
     <>
-      <Button  width="full" bg="black" color="white" _hover="none" borderRadius="0px" onClick={onOpen}>CHECKOUT</Button>
+      <Button
+        width="full"
+        bg="black"
+        color="white"
+        _hover="none"
+        borderRadius="0px"
+        onClick={onOpen}
+      >
+        CHECKOUT
+      </Button>
 
-      <Modal size="lg" isOpen={isOpen} onClose={onClose} >
+      <Modal size="lg" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalBody mt="10px">
-            <Heading fontWeight="md" textAlign="center">Thank you for shopping with us!</Heading>
+            <Heading fontWeight="md" textAlign="center">
+              Thank you for shopping with us!
+            </Heading>
           </ModalBody>
 
           <ModalFooter justifyContent="center" my="10px">
             <Link to="../">
-            <Button bg="black" color="white" _hover="none" borderRadius="0px"  onClick={closeModal}>
-              GO TO HOME PAGE
-            </Button>
+              <Button
+                bg="black"
+                color="white"
+                _hover="none"
+                borderRadius="0px"
+                onClick={closeModal}
+              >
+                GO TO HOME PAGE
+              </Button>
             </Link>
-           
           </ModalFooter>
         </ModalContent>
       </Modal>
     </>
-    // <Box maxW="sm" bg="white">
-    //     <Button width="full" bg="black" color="white" _hover="none" borderRadius="0px" onClick={onOpen}>CHECKOUT</Button>
-    //     <Modal isOpen={isOpen}>
-    //     <ModalOverlay>
-    //         <ModalBody>
-    //             <Heading>Thank you for shopping with us!</Heading>
-    //         </ModalBody>
-    //         <ModalFooter>
-    //             <Button onClick={onClose}>GO TO HOME PAGE</Button>
-    //         </ModalFooter>
-    //     </ModalOverlay>
-    //     </Modal>
-    // </Box>
   );
 }

@@ -24,7 +24,7 @@ export default function Product() {
   return (
     <Grid mx={20} my={5} gap={10} templateColumns="repeat(3, 1fr)">
         <GridItem colSpan="1">
-            <Image src={product[0].image} objectfit="cover" width="400px"/>
+            <Image src={product[0].image} boxSize="480px" width="400px"/>
         </GridItem>
         <GridItem colSpan="2" >
            <VStack spacing={4} alignItems="start">
@@ -39,14 +39,17 @@ export default function Product() {
             </HStack>
             <Text>Select size</Text>
             <HStack>
-            <Box w="50px" h="50px" >1</Box>
-            <Box w="50px" h="50px">2</Box>
-            <Box w="50px" h="50px" >3</Box>
-            <Box w="50px" h="50px" >4</Box>
+            <Box w="50px" h="50px" border="" textAlign="center" alignContent="center">1</Box>
+            <Box w="50px" h="50px" textAlign="center" alignContent="center" _selected={{
+              border: "1px solid black"
+            }}>2</Box>
+            <Box w="50px" h="50px" textAlign="center" alignContent="center">3</Box>
+            <Box w="50px" h="50px" textAlign="center" alignContent="center">4</Box>
             </HStack>
            </VStack>
-           <Link to="../cart"><Button w="400px" h="50px" bg="black" color="white" _hover="none" borderRadius="0px" onClick={addBagHandler}>Add to bag</Button></Link>
+           <Link to="../cart"><Button w="400px" h="50px" mt="10px" bg="black" color="white" _hover="none" borderRadius="0px" onClick={addBagHandler}>Add to bag</Button></Link>
         </GridItem>
     </Grid>
+   
   )
 }

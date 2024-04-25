@@ -17,14 +17,22 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cartAction } from "../store/cart-slice";
 
+
 export default function ProductItem() {
   const carts = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
-  console.log(carts);
 
   const deleteItemHandler = (id) => {
     dispatch(cartAction.deleteCartItem(id));
   };
+
+  const selectHandler = (e, price) => {
+    console.log(e.target.value);
+    const count = Number(e.target.value);
+    const totalPrice = count * price - price;
+    console.log(count, totalPrice);
+  }
+
   return (
     <>
       {carts.length > 0 &&
@@ -73,7 +81,7 @@ export default function ProductItem() {
                 </HStack>
               </CardBody>
               <CardFooter>
-                <Select size="lg" maxW="100px" placeholder="1" >
+                <Select size="lg" maxW="100px" placeholder="1" onChange={(e) => selectHandler(e, item.price)}>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>

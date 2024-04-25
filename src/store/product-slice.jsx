@@ -16,34 +16,47 @@ const productSlice = createSlice({
     products: [],
     wishList: [],
     product: [],
+    category: [],
     totalItem: 0,
     totalPrice: 0,
+    login: false,
   },
 
   reducers: {
     buyProductBtn(state, action) {
       const item = state.products.find((item) => item.id === action.payload);
       state.product.pop();
-      console.log(item);
       state.product.push(item);
-      
     },
 
     wishListBtn(state, action) {
-      console.log(action.payload);
       const wishlistItem = state.products.find(
         (item) => item.id === action.payload
       );
-      console.log(wishlistItem);
       const isItem = state.wishList.find((item) => item.id === action.payload);
       if (!isItem) {
         state.wishList.push(wishlistItem);
       }
     },
 
-    wishItemRemoveHandler(state, action){
-      state.wishList = state.wishList.filter((item) => item.id !== action.payload);
-    }
+    wishItemRemoveHandler(state, action) {
+      state.wishList = state.wishList.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+
+    categoryItemHandler(state, action) {
+      console.log(state.products);
+      console.log(action.payload);
+      state.category = state.products.filter(
+        (item) => item.category === action.payload
+      );
+      console.log(state.category);
+    },
+
+    LoginSuccess(state, action) {
+      state.login = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
