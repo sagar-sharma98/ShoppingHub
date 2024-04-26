@@ -9,8 +9,8 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import ProductItem from "../components/ProductItem";
 import { useSelector } from "react-redux";
 import CartModal from "../modal/CartModal";
@@ -19,6 +19,15 @@ export default function Cart() {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const totalItem = useSelector((state) => state.cart.totalItem);
   const carts = useSelector((state) => state.cart.cart);
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if(!token){
+        navigate("/login");
+    }
+  }, [token])
 
   return (
     <>
