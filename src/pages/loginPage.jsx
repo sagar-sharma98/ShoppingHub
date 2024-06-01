@@ -30,7 +30,10 @@ export default function LoginPage() {
   const loginHandler = async (e) => {
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(firebaseAuth, email, password);
+      const userDetails = await signInWithEmailAndPassword(firebaseAuth, email, password);
+      const userToken = await userDetails.user
+      console.log(userToken);
+      // localStorage.setItem("token", userToken);
       dispatch(productAction.LoginSuccess(true));
       navigate("/");
     } catch (error) {
