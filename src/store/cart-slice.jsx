@@ -29,7 +29,7 @@ const cartSlice = createSlice({
           if (item.id === itemPresent.id) {
             return {
               ...item,
-              price: item.price + itemPresent.price,
+              price: item.price + cartItem.price,
               itemquantity: item.itemquantity + 1,
             };
           }
